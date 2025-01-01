@@ -1,0 +1,107 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="new" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="696a4823-7e79-4980-b11e-3cc840ae7236">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<query language="SQL"><![CDATA[select distinct course_name, max( distinct course_result) as highest_result, count(distinct course_student.student_id) as total_student, count(distinct attendance.date) as total_learning_days,(count(distinct attendance.date) * count(distinct course_student.student_id)) as total_expected_attendance, count(distinct attendance.attendance_id) as attendance from course inner join attendance on course.course_name = attendance.course_id inner join course_student on course.course_id = course_student.course_id inner join result on course.course_name = result.course_id where attendance.status = 'Present ' or attendance.status = 'Present' and course.course_id = course_student.course_id group by course_name]]></query>
+	<field name="course_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="course"/>
+	</field>
+	<field name="highest_result" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="highest_result"/>
+		<property name="com.jaspersoft.studio.field.label" value="highest_result"/>
+	</field>
+	<field name="total_student" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_student"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_student"/>
+	</field>
+	<field name="total_learning_days" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_learning_days"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_learning_days"/>
+	</field>
+	<field name="total_expected_attendance" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_expected_attendance"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_expected_attendance"/>
+	</field>
+	<field name="attendance" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="attendance"/>
+		<property name="com.jaspersoft.studio.field.label" value="attendance"/>
+	</field>
+	<group name="course_name">
+		<expression><![CDATA[$F{course_name}]]></expression>
+	</group>
+	<group name="highest_result">
+		<expression><![CDATA[$F{highest_result}]]></expression>
+	</group>
+	<group name="total_student">
+		<expression><![CDATA[$F{total_student}]]></expression>
+	</group>
+	<group name="total_learning_days">
+		<expression><![CDATA[$F{total_learning_days}]]></expression>
+	</group>
+	<group name="total_expected_attendance">
+		<expression><![CDATA[$F{total_expected_attendance}]]></expression>
+	</group>
+	<group name="attendance">
+		<expression><![CDATA[$F{attendance}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="e1db217e-8a08-49fa-b792-5a793f1bfc2b" x="66" y="10" width="440" height="30" fontSize="22.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[EDUCATION MANAGEMENT SYSTEM]]></text>
+		</element>
+		<element kind="staticText" uuid="40aaec8b-12fc-4bc5-b206-4459b2315996" x="147" y="49" width="250" height="30" fontSize="16.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[COURSE SUMMARY REPORT]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="56" splitType="Stretch">
+		<element kind="staticText" uuid="f8684ba9-ae3f-4908-aa5b-55a60b05ddb4" x="85" y="7" width="80" height="35" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[No. of students]]></text>
+		</element>
+		<element kind="staticText" uuid="496ce352-bee1-42e5-8412-d1d2cd7aa817" x="3" y="8" width="62" height="37" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Course Name]]></text>
+		</element>
+		<element kind="staticText" uuid="dbbad3ca-7f47-4344-a74d-ff06a77c24b7" x="265" y="7" width="110" height="35" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Expected Attendance]]></text>
+		</element>
+		<element kind="staticText" uuid="7b179225-ec7f-48f6-9fea-348bd152cea9" x="484" y="5" width="73" height="35" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Highest Results]]></text>
+		</element>
+		<element kind="line" uuid="190f7835-4fd6-4602-bc4f-198c478d076a" x="-40" y="50" width="610" height="2">
+			<pen lineWidth="2.0"/>
+		</element>
+		<element kind="staticText" uuid="3b57f8b5-31ef-44cc-920f-0affc6313b57" x="176" y="7" width="76" height="35" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Learning Days]]></text>
+		</element>
+		<element kind="staticText" uuid="3331b43b-6dbb-4266-b9dc-903d69fc6fe3" x="387" y="6" width="91" height="35" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Total Attendance]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<element kind="textField" uuid="b52cf03f-8ace-4c2b-8e87-70627827a2fd" x="3" y="0" width="75" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{course_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="23fc0b57-9198-429c-83fd-50cd404a7c3a" x="85" y="0" width="80" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{total_student}]]></expression>
+			</element>
+			<element kind="textField" uuid="1ecca7b5-97d1-497d-952a-b6ccdc433f91" x="176" y="0" width="76" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{total_learning_days}]]></expression>
+			</element>
+			<element kind="textField" uuid="5670552e-71e6-42a9-b21a-ffb1a77a9176" x="265" y="0" width="110" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{total_expected_attendance}]]></expression>
+			</element>
+			<element kind="textField" uuid="ade755ea-82f6-4a24-80cc-573b831ed218" x="387" y="0" width="91" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{attendance}]]></expression>
+			</element>
+			<element kind="textField" uuid="65a357ac-64a7-4000-beaa-1b4257fd1c53" x="484" y="0" width="73" height="20" fontSize="12.0" hTextAlign="Center">
+				<expression><![CDATA[$F{highest_result}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

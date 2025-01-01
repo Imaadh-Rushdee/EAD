@@ -1,0 +1,80 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="StudentCOurse" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79bd3d92-60f1-4ecc-a2c8-5f22f6c07477">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<query language="SQL"><![CDATA[select max(course_result), result.student_id, student_name, course_id from student inner join result on student.student_id = result.student_id group by course_id, student_name]]></query>
+	<field name="max(course_result)" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="max(course_result)"/>
+		<property name="com.jaspersoft.studio.field.label" value="max(course_result)"/>
+	</field>
+	<field name="student_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="student_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="result"/>
+	</field>
+	<field name="student_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="student_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="course_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="course_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="result"/>
+	</field>
+	<group name="max(course_result)">
+		<expression><![CDATA[$F{max(course_result)}]]></expression>
+	</group>
+	<group name="student_id">
+		<expression><![CDATA[$F{student_id}]]></expression>
+	</group>
+	<group name="student_name">
+		<expression><![CDATA[$F{student_name}]]></expression>
+	</group>
+	<group name="course_id">
+		<expression><![CDATA[$F{course_id}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="a475a094-00a2-4616-91a9-0de98f91cf3a" x="66" y="10" width="440" height="30" fontSize="22.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[EDUCATION MANAGEMENT SYSTEM]]></text>
+		</element>
+		<element kind="staticText" uuid="bbf1d354-9807-496a-8bbe-5455f535cbf7" x="140" y="49" width="257" height="30" fontSize="16.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[STUDENT COURSE SUMMARY REPORT]]></text>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="32" splitType="Stretch">
+		<element kind="staticText" uuid="7eca1296-88dc-465f-ab5d-d41372f6d8a0" x="1" y="5" width="100" height="20" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Student Id]]></text>
+		</element>
+		<element kind="staticText" uuid="9bbb1393-b589-4c4d-9df9-f2e788844cb4" x="120" y="5" width="120" height="20" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Student name]]></text>
+		</element>
+		<element kind="staticText" uuid="06c6bb32-ba7e-4225-b77f-2126793b8f3f" x="260" y="5" width="120" height="20" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Course Name]]></text>
+		</element>
+		<element kind="staticText" uuid="21a3568f-c550-466f-8067-b9ff2e803657" x="406" y="5" width="120" height="20" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Course Results]]></text>
+		</element>
+		<element kind="line" uuid="180f44f4-0ac6-4a89-82c6-13292cf2db6b" x="1" y="28" width="537" height="1"/>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<element kind="textField" uuid="a8fe26c8-fa02-4c7d-a766-7b4c356f68ce" x="10" y="7" width="91" height="20" fontSize="14.0" hTextAlign="Center">
+				<expression><![CDATA[$F{student_id}]]></expression>
+			</element>
+			<element kind="textField" uuid="521ec5b3-e8ac-4710-81b9-6d0a484a1d3d" x="121" y="7" width="120" height="20" fontSize="14.0" hTextAlign="Center">
+				<expression><![CDATA[$F{student_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="f74e926f-3a7f-455a-bc44-7876a8a3fef7" x="260" y="6" width="120" height="20" fontSize="14.0" hTextAlign="Center">
+				<expression><![CDATA[$F{course_id}]]></expression>
+			</element>
+			<element kind="textField" uuid="cc39d691-0cf2-41ca-8eae-aa8224801902" x="406" y="6" width="120" height="20" fontSize="14.0" hTextAlign="Center">
+				<expression><![CDATA[$F{max(course_result)}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="48" splitType="Stretch"/>
+</jasperReport>
